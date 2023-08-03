@@ -1,0 +1,49 @@
+//uva 11462 age sort
+#include<iostream>
+using namespace std;
+int nm[2000001];
+int main()
+{
+	int n;
+	while(cin>>n,n)
+	{
+		for(int i=0;i<2000001;i++)
+		{
+			nm[i]=0;
+		}
+		int numbers[n];
+		for(int i=0;i<n;i++)
+		{
+			cin>>numbers[i];
+			nm[numbers[i]]++;
+		}
+		int k=0;
+		for(int i=2000000;i>=0;i--)
+		{
+			if(nm[i]>0)
+			{
+				k=i;
+				break;
+			}
+		}
+		for(int i=0;i<2000001;i++)
+		{
+			if(nm[i]>0)
+			{
+				for(int j=0;j<nm[i];j++)
+				{
+					if(j==nm[i]-1 && i==k)
+					{
+						cout<<i;
+					}
+					else
+					{
+						cout<<i<<" ";	
+					}
+				}
+			}
+		}
+		cout<<"\n";
+	}
+	return 0;
+}
